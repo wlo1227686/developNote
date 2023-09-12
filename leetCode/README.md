@@ -3,6 +3,7 @@
 [1. Two Sum](#1) </br>
 [2. Add Two Numbers](#2) </br>
 [50. Pow(x, n)](#50)</br>
+[66. Plus One](#66)</br>
 [70. Climbing Stairs](#70)</br>
 [128. Longest Consecutive Sequence](#128)</br>
 [189. Rotate Array](#189)</br>
@@ -123,6 +124,59 @@ Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
 
     public double myPow(double x, int n) {
         return Math.pow(x,n);
+    }
+
+[回目錄](#home)</br><h1 id="66">66. Plus One</h1>
+
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+Increment the large integer by one and return the resulting array of digits.
+
+## Example 1:
+
+    Input: digits = [1,2,3]
+    Output: [1,2,4]
+    Explanation: The array represents the integer 123.
+    Incrementing by one gives 123 + 1 = 124.
+    Thus, the result should be [1,2,4].
+
+## Example 2:
+
+    Input: digits = [4,3,2,1]
+    Output: [4,3,2,2]
+    Explanation: The array represents the integer 4321.
+    Incrementing by one gives 4321 + 1 = 4322.
+    Thus, the result should be [4,3,2,2].
+
+## Example 3:
+
+    Input: digits = [9]
+    Output: [1,0]
+    Explanation: The array represents the integer 9.
+    Incrementing by one gives 9 + 1 = 10.
+    Thus, the result should be [1,0].
+
+
+## Ans
+
+    public int[] plusOne(int[] digits) {
+		// 把數值加1並直接回傳
+		for (int i = digits.length - 1; i >= 0; i--) {
+			// 2345 -> 2346 、 2379 -> 2380
+			if (digits[i] < 9) { // 只要發現有小於9值
+				++digits[i]; // 先加加再把陣列做回傳
+				return digits;
+			}
+			// 當前位數為9則直接進位改0,下個迴圈做進位
+			digits[i] = 0;
+		}
+		// 如果沒在for回圈return 表示該值要進位
+		// 9 -> 10、 99 -> 100、999 -> 1000
+		// 此時你會發現最左側為1其他則為0
+		int size = digits.length + 1;
+		int ans[] = new int[size];
+		ans[0] = 1;
+		return ans;        
     }
 
 [回目錄](#home)</br><h1 id="70">70. Climbing Stairs</h1>
