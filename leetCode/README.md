@@ -1,12 +1,14 @@
 <h1 id="home">目錄</h1>
 
 [1. Two Sum](#1) </br>
+[2. Add Two Numbers](#2) </br>
 [50. Pow(x, n)](#50)</br>
 [70. Climbing Stairs](#70)</br>
 [128. Longest Consecutive Sequence](#128)</br>
 [189. Rotate Array](#189)</br>
 [268. Missing Number](#268)</br>
 [345. Reverse Vowels of a String](#345)</br>
+[1502. Can Make Arithmetic Progression From Sequence](#1502)</br>
 
 [回目錄](#home)</br><h1 id="1">1. Two Sum</h1>
 
@@ -43,6 +45,58 @@ You can return the answer in any order.
     		}
     	}
     	return null;
+    }
+
+[回目錄](#home)</br><h1 id="2">2. Add Two Numbers</h1>
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+</br>![addtwonumber1.jpg](img/addtwonumber1.jpg)</br>
+## Example 1:
+
+    Input: l1 = [2,4,3], l2 = [5,6,4]
+    Output: [7,0,8]
+    Explanation: 342 + 465 = 807.
+
+## Example 2:
+
+    Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+    Output: [8,9,9,9,0,0,0,1]
+
+## Example 3:
+
+    Input: l1 = [0], l2 = [0]
+    Output: [0]
+
+## Ans
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		ListNode ans = new ListNode(0);
+		ListNode tmp = ans; // tmp指向ans的記憶體位置
+		while (l1 != null || l2 != null) {
+			int tmpL1 = 0, tmpL2 = 0, sum = 0;
+			boolean carry = false; // 是否進位
+			if (l1 != null) { // 取出數值並進位
+				tmpL1 = l1.val;
+				l1 = l1.next;
+			}
+			if (l2 != null) { // 取出數值並進位
+				tmpL2 = l2.val;
+				l2 = l2.next;
+			}
+			sum = tmp.val + tmpL1 + tmpL2;
+			if (sum >= 10) { // 是否需進位
+				carry = true;
+			}
+			tmp.val = sum % 10; // 取sum補數
+			if (l1 != null || l2 != null || carry) {
+				// 當 l1有值 或 l2有值 或 需進位才增加ListNode
+				tmp.next = new ListNode(carry ? 1 : 0); // 有進位則補1反之補0
+				tmp = tmp.next;
+			}
+		} // end_while
+		return ans;
     }
 
 [回目錄](#home)</br><h1 id="50">50. Pow(x, n)</h1>
@@ -306,4 +360,45 @@ The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower an
     		}
     	}// end_for
         return new String(chars);
+    }
+
+[回目錄](#home)</br><h1 id="1502">1502. Can Make Arithmetic Progression From Sequence</h1>
+
+A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.
+
+Given an array of numbers arr, return true if the array can be rearranged to form an arithmetic progression. Otherwise, return false.
+
+## Example 1:
+
+    Input: arr = [3,5,1]
+    Output: true
+    Explanation: We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2 respectively, between each consecutive elements.
+
+## Example 2:
+
+    Input: arr = [1,2,4]
+    Output: false
+    Explanation: There is no way to reorder the elements to obtain an arithmetic progression.
+
+## Example 3:
+
+    Input: arr = [1,10,10,10,19]
+    Output: false
+
+## Ans
+
+    public boolean canMakeArithmeticProgression(int[] arr) {
+		// 1. 升冪排序
+        Arrays.sort(arr);
+		if (arr.length <= 1) {
+			return false;
+		}
+        // 2. 判斷間隔
+		int seq = arr[1] - arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] - arr[i - 1] != seq) {
+				return false;
+			}
+		}
+		return true;
     }
