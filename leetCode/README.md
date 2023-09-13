@@ -2,6 +2,7 @@
 
 [1. Two Sum](#1) </br>
 [2. Add Two Numbers](#2) </br>
+[9. Palindrome Number](#9) </br>
 [50. Pow(x, n)](#50)</br>
 [66. Plus One](#66)</br>
 [70. Climbing Stairs](#70)</br>
@@ -9,6 +10,7 @@
 [189. Rotate Array](#189)</br>
 [268. Missing Number](#268)</br>
 [345. Reverse Vowels of a String](#345)</br>
+[844. Backspace String Compare](#844)</br>
 [1502. Can Make Arithmetic Progression From Sequence](#1502)</br>
 
 [回目錄](#home)</br><h1 id="1">1. Two Sum</h1>
@@ -99,6 +101,44 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 		} // end_while
 		return ans;
     }
+
+[回目錄](#home)</br><h1 id="9">9. Palindrome Number</h1>
+
+Given an integer x, return true if x is a palindrome, and false otherwise.
+## Example 1:
+
+	Input: x = 121
+	Output: true
+	Explanation: 121 reads as 121 from left to right and from right to left.
+
+## Example 2:
+
+	Input: x = -121
+	Output: false
+	Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+
+## Example 3:
+
+	Input: x = 10
+	Output: false
+	Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+## Ans
+
+    public boolean isPalindrome(int x) {
+		if (x < 0) {
+			return false;
+		}
+		int tmp = x;
+		int after = 0;
+		while (tmp != 0) {
+			after = after * 10 + tmp % 10;
+			tmp = tmp / 10;
+			System.out.println("(E)after=" + after + " tmp=" + tmp);
+		}
+		return x == after ? true : false;
+    }
+
 
 [回目錄](#home)</br><h1 id="50">50. Pow(x, n)</h1>
 
@@ -415,6 +455,52 @@ The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower an
     	}// end_for
         return new String(chars);
     }
+
+[回目錄](#home)</br><h1 id="844">844. Backspace String Compare</h1>
+
+Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+
+Note that after backspacing an empty text, the text will continue empty.
+
+## Example 1:
+
+	Input: s = "ab#c", t = "ad#c"
+	Output: true
+	Explanation: Both s and t become "ac".
+
+## Example 2:
+
+	Input: s = "ab##", t = "c#d#"
+	Output: true
+	Explanation: Both s and t become "".
+
+## Example 3:
+
+	Input: s = "a#c", t = "b"
+	Output: false
+	Explanation: s becomes "c" while t becomes "b".
+
+## Ans
+
+	public boolean backspaceCompare(String s, String t) {
+		return checkType(s).equals(checkType(t));
+	}
+
+	public String checkType(String s) {
+		StringBuilder sb = new StringBuilder();
+		for (char item : s.toCharArray()) {
+			if ('#' == item) {
+				if (sb.length() > 0) {
+					// 當發現#且sb還有字符時,移除最後一碼字符
+					sb.deleteCharAt(sb.length() - 1);
+				}
+			} else {
+				// 新增字符至sb
+				sb.append(item);
+			}
+		} // end_for
+		return sb.toString();
+	}
 
 [回目錄](#home)</br><h1 id="1502">1502. Can Make Arithmetic Progression From Sequence</h1>
 
