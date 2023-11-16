@@ -43,6 +43,7 @@
 	(13)  最小化(視窗)   command + M
 	(14)  回車鍵   fn + delete
 
+	(15) 手動校正系統時間 sudo sntp -sS time.apple.com
 
 
 
