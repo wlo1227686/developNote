@@ -106,7 +106,7 @@ application.properties
 
 <h2 id="ch01-9">簡化部署</h2>
 
-省去過往安裝部署Tomcat的相關事項，透過引入SpringBoot的插件,將項目打包為jar包,即可在主機上運行。
+省去過往安裝部署Tomcat的相關事項，透過引入SpringBoot的插件，將項目打包為jar包，即可在主機上運行。
 
 ```xml
 <build>
