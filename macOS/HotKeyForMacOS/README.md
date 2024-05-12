@@ -45,5 +45,11 @@
 
 	(15) 手動校正系統時間 sudo sntp -sS time.apple.com
 
+	(16)   透過終端機來清除磁碟  
+	(16-1) diskutil list     查看裝置清單
+	(16-2)   diskutil erasedisk 裝置格式 裝置名稱 GPT 裝置路徑
+	   範例 : diskutil erasedisk hfs+ HelloWorld GPT /dev/disk2
+
+
 
 
