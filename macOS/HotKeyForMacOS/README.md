@@ -50,6 +50,19 @@
 	(16-2)   diskutil erasedisk 裝置格式 裝置名稱 GPT 裝置路徑
 	   範例 : diskutil erasedisk hfs+ HelloWorld GPT /dev/disk2
 
+<br>三.Chrome預設無痕模式設定
+	
+	(1) 開啟 工序指令編寫程式
 
+	(2) 貼入以下指令
+	
+		if application "Google Chrome" is running then
+			tell application "Google Chrome"
+				make new window with properties {mode:"incognito"}
+			end tell
+		else
+			do shell script "open -a 'Google Chrome' --args --incognito "
+		end if
 
-
+	(3) 保存為 應用程式
+	(4) 調整 檔案名稱、logo  https://github.com/alrra/browser-logos/
