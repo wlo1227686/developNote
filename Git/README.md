@@ -274,8 +274,13 @@
 <br>&nbsp;&nbsp;4-3-2-6.&nbsp;&nbsp;快轉機制(fast-forward):
 <br>![](img/img25.png)<br>
 
+<br>&nbsp;&nbsp;4-4.&nbsp;&nbsp;實務上常用指令:
+<br>&nbsp;&nbsp;4-4-1.&nbsp;&nbsp;cherry-pick:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;情境: 我可能只想要某個commit上的變更內容(不限定分支)或者同個專案分散在其他分支上的多個commit都可以透過cherry-pick做擷取
 
-
+    命令:
+    git cherry-pick XXXXXX、XXXXXX... (單個或多個Hash碼)
+    git cherry-pick XXXXXX、XXXXXX... --no-commit (透過no commit可先將變更內容放置於暫存區，最終在做commit
 
 <h2 id="ch05">5. Git基本原理</h2>
 <br>&nbsp;&nbsp;5-1.&nbsp;&nbsp;hash(哈希):是一系列的加密演算法，各種不同的hash算法雖然加密強度不同。
