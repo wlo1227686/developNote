@@ -66,3 +66,21 @@
 
 	(3) 保存為 應用程式
 	(4) 調整 檔案名稱、logo  https://github.com/alrra/browser-logos/
+
+<br>nvm安裝
+
+	(1) 安裝 NVM
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+	
+	(2)配置Shell文件 vim ~/.zshrc
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	
+	(3) 重新載入配置文件
+		source ~/.zshrc
+
+
+	(4)驗證環節:
+		echo $NVM_DIR   ## /Users/你的使用者名稱/.nvm
+		nvm --version
