@@ -50,3 +50,4 @@ I.&nbsp;&nbsp;顯示IDE工具記憶體即時使用率
     *   Preferences -> General -> Show heap status
 <br>![img06](img/img07.png)<br>
 
+測試
